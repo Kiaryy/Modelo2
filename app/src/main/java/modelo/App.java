@@ -3,10 +3,11 @@
  */
 package modelo;
 
-import main.java.modelo.Articulo;
-import main.java.modelo.Imagen;
-import main.java.modelo.Promocion;
-import main.java.modelo.UnidadMedida;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.Arrays;
+import java.util.HashSet;
+
 
 public class App {
     public static void main(String[] args) {
@@ -91,9 +92,9 @@ public class App {
         
         Articulo articulo1 = Articulo.builder()
             .id(1L)
-            .denominacion("Articulo para Pizza Grande Hawaiana")
-            .precioVenta(15F)
-            .precioCompra(10F)
+            .denominacion("Pizza Grande Hawaiana")
+            .precioVenta(15D)
+            .precioCompra(10D)
             .stockAnual(20)
             .stockMaximo(40)
             .unidadMedida(unidad1)
@@ -102,9 +103,9 @@ public class App {
         
         Articulo articulo2 = Articulo.builder()
             .id(2L)
-            .denominacion("Articulo para Pizza Chica Hawaiana")
-            .precioVenta(10F)
-            .precioCompra(5F)
+            .denominacion("Pizza Chica Hawaiana")
+            .precioVenta(10D)
+            .precioCompra(5D)
             .stockAnual(20)
             .stockMaximo(40)
             .unidadMedida(unidad2)
@@ -113,9 +114,9 @@ public class App {
         
         Articulo articulo3 = Articulo.builder()
             .id(3L)
-            .denominacion("Articulo para Pizza Grande Napolitana")
-            .precioVenta(20F)
-            .precioCompra(15F)
+            .denominacion("Pizza Grande Napolitana")
+            .precioVenta(20D)
+            .precioCompra(15D)
             .stockAnual(15)
             .stockMaximo(30)
             .unidadMedida(unidad1)
@@ -124,9 +125,9 @@ public class App {
         
         Articulo articulo4 = Articulo.builder()
             .id(4L)
-            .denominacion("Articulo para Pizza Chica Napolitana")
-            .precioVenta(15F)
-            .precioCompra(10F)
+            .denominacion("Pizza Chica Napolitana")
+            .precioVenta(15D)
+            .precioCompra(10D)
             .stockAnual(15)
             .stockMaximo(30)
             .unidadMedida(unidad2)
@@ -135,9 +136,9 @@ public class App {
 
         Articulo articulo5 = Articulo.builder()
             .id(5L)
-            .denominacion("Articulo para Pizza Grande Muzza")
-            .precioVenta(25F)
-            .precioCompra(20F)
+            .denominacion("Pizza Grande Muzza")
+            .precioVenta(25D)
+            .precioCompra(20D)
             .stockAnual(20)
             .stockMaximo(30)
             .unidadMedida(unidad1)
@@ -146,9 +147,9 @@ public class App {
 
         Articulo articulo6 = Articulo.builder()
             .id(6L)
-            .denominacion("Articulo para Pizza Chica Muzza")
-            .precioVenta(20F)
-            .precioCompra(15F)
+            .denominacion("Pizza Chica Muzza")
+            .precioVenta(20D)
+            .precioCompra(15D)
             .stockAnual(20)
             .stockMaximo(30)
             .unidadMedida(unidad2)
@@ -158,8 +159,8 @@ public class App {
         Articulo articulo7 = Articulo.builder()
             .id(7L)
             .denominacion("Cerveza Andes")
-            .precioVenta(20F)
-            .precioCompra(15F)
+            .precioVenta(20D)
+            .precioCompra(15D)
             .stockAnual(20)
             .stockMaximo(30)
             .unidadMedida(unidad3)
@@ -169,22 +170,133 @@ public class App {
         Articulo articulo8 = Articulo.builder()
             .id(8L)
             .denominacion("Cerveza Quilmes")
-            .precioVenta(20F)
-            .precioCompra(15F)
+            .precioVenta(20D)
+            .precioCompra(15D)
             .stockAnual(20)
             .stockMaximo(30)
             .unidadMedida(unidad3)
             .imagen(imagen8)
             .build();
         
+        // HashSets a utilizar en el constructor de la clase promocion
+        HashSet<Imagen> imagenesPromo1 = new HashSet<>();
+        imagenesPromo1.add(imagen1);
+        imagenesPromo1.add(imagen3);
+        imagenesPromo1.add(imagen8);
+        HashSet<Articulo> articulosPromo1 = new HashSet<>();
+        articulosPromo1.add(articulo1);
+        articulosPromo1.add(articulo2);
+        articulosPromo1.add(articulo8);
         Promocion promocion1 = Promocion.builder()
             .id(1L)
             .denominacion("Promocion Happy Hour")
-            .FechaDesde("2024-9-2")
-            .FechaHasta("2024-12-0")
-            .HoraDesde("10:00:00")
-            .HoraHasta("10:00:00")
+            .FechaDesde(LocalDate.parse("2024-11-02"))
+            .FechaHasta(LocalDate.parse("2024-11-02"))
+            .HoraDesde(LocalTime.parse("16:00:00"))
+            .HoraHasta(LocalTime.parse("18:00:00"))
             .descpripcionDescuento("Descuento para los articulos Hawaiana Grande, Muzza Grande y Cerveza Quilmes")
-            .promoImagen(). // TODO resto del archivo xd
+            .promoImagen(imagenesPromo1)
+            .promociones(articulosPromo1)
+            .build();
+        
+            // HashSets a utilizar en el constructor de la clase promocion
+        HashSet<Imagen> imagenesPromo2 = new HashSet<>();
+        imagenesPromo2.add(imagen4);
+        imagenesPromo2.add(imagen4);
+        imagenesPromo2.add(imagen8);
+        imagenesPromo2.add(imagen7);
+        HashSet<Articulo> articulosPromo2 = new HashSet<>();
+        articulosPromo2.add(articulo2);
+        articulosPromo2.add(articulo3);
+        articulosPromo2.add(articulo8);
+        articulosPromo2.add(articulo7);
+            Promocion promocion2 = Promocion.builder()
+            .id(2L)
+            .denominacion("Promocion Verano")
+            .FechaDesde(LocalDate.parse("2025-01-01"))
+            .FechaHasta(LocalDate.parse("2025-04-01"))
+            .HoraDesde(LocalTime.parse("10:00:00"))
+            .HoraHasta(LocalTime.parse("10:00:00"))
+            .descpripcionDescuento("Descuento para los articulos Hawaiana Chica, Napolitana Grande, Cerveza Quilmes y Cerveza Andes")
+            .promoImagen(imagenesPromo2)
+            .promociones(articulosPromo2)
+            .build();
+
+            // HashSets a utilizar en el constructor de la clase promocion
+        HashSet<Imagen> imagenesPromo3 = new HashSet<>();
+        imagenesPromo3.add(imagen1);
+        imagenesPromo3.add(imagen6);
+        imagenesPromo3.add(imagen8);
+        HashSet<Articulo> articulosPromo3 = new HashSet<>();
+        articulosPromo3.add(articulo1);
+        articulosPromo3.add(articulo6);
+        articulosPromo3.add(articulo8);
+            Promocion promocion3 = Promocion.builder()
+            .id(3L)
+            .denominacion("Promocion Invierno")
+            .FechaDesde(LocalDate.parse("2025-06-01"))
+            .FechaHasta(LocalDate.parse("2025-09-01"))
+            .HoraDesde(LocalTime.parse("10:00:00"))
+            .HoraHasta(LocalTime.parse("10:00:00"))
+            .descpripcionDescuento("Descuento para los articulos Hawaiana Grande, Muzza Chica y Cerveza Quilmes")
+            .promoImagen(imagenesPromo3)
+            .promociones(articulosPromo3)
+            .build();
+        
+        System.out.println("----------Articulos-----------");
+        System.out.println(articulo1.getDenominacion());
+        System.out.println(articulo2.getDenominacion());
+        System.out.println(articulo3.getDenominacion());
+        System.out.println(articulo4.getDenominacion());
+        System.out.println(articulo5.getDenominacion());
+        System.out.println(articulo6.getDenominacion());
+        System.out.println(articulo7.getDenominacion());
+        System.out.println(articulo8.getDenominacion());
+        System.out.println("----------Promociones-----------");
+        System.out.println("Promocion 1:");
+        System.out.println(promocion1.getDenominacion());
+        System.out.println("-----Articulos en Promocion 1----");
+        Double total1 = 0D;
+        // Se imprime la descripcion de cada articulo y se suma su precio al total de la promocion
+        for (Articulo articulo : promocion1.getPromociones()) {
+            System.out.println(articulo.getDenominacion());
+            total1 += articulo.getPrecioVenta();
+        }
+        System.out.println("Total: $" + total1);
+        System.out.println("-----------------");
+        System.out.println("Promocion 2:");
+        System.out.println(promocion2.getDenominacion());
+        System.out.println("-----Articulos en Promocion 2----");
+        Double total2 = 0D;
+        for (Articulo articulo : promocion2.getPromociones()) {
+            System.out.println(articulo.getDenominacion());
+            total2 += articulo.getPrecioVenta();
+        }
+        System.out.println("Total: $" + total2);
+        System.out.println("-----------------");
+
+        System.out.println("Promocion 3:");
+        System.out.println(promocion3.getDenominacion());
+        System.out.println("-----Articulos en Promocion 3----");
+        Double total3 = 0D;
+        for (Articulo articulo : promocion3.getPromociones()) {
+            System.out.println(articulo.getDenominacion());
+            total3 += articulo.getPrecioVenta();
+        }
+        System.out.println("Total: $" + total3);
+        System.out.println("-----------------");
+
+        System.out.println("Promocion de Verano:\nValida desde: " + promocion2.getFechaDesde() + " " + promocion2.getHoraDesde());
+        System.out.println("Valida hasta: " + promocion2.getFechaHasta() + " " + promocion2.getHoraHasta());
+
+        if (total1 < total2 && total1 < total3) {
+            System.out.println("La promocion mas economica es la numero 1, con un precio de: $" + total1);
+        } else if (total2 < total1 && total2 < total3) {
+            System.out.println("La promocion mas economica es la numero 2, con un precio de: $" + total2);
+        } else{
+            System.out.println("La promocion mas economica es la numero 3, con un precio de: $" + total3);
+        }
+
+
     }
 }

@@ -1,4 +1,4 @@
-package main.java.modelo;
+package modelo;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -13,7 +13,7 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @Setter
 @Getter
-@ToString(exclude = "localidad")  // Excluir localidad para evitar recursión infinita
+@ToString(exclude = "localidad") 
 @SuperBuilder
 
 public class Promocion {
@@ -25,7 +25,7 @@ public class Promocion {
     private LocalTime HoraHasta;
     private String descpripcionDescuento;
     HashSet<Imagen> promoImagen = new HashSet<Imagen>();
-    HashSet<Promocion> promociones = new HashSet<Promocion>();
+    HashSet<Articulo> promociones = new HashSet<Articulo>();
 
     
 }
