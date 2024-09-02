@@ -9,7 +9,6 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @Setter
 @Getter
-@ToString(exclude = "localidad")  // Excluir localidad para evitar recursión infinita
 @SuperBuilder
 public class Articulo {
     private long id;

@@ -13,7 +13,6 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @Setter
 @Getter
-@ToString(exclude = "localidad") 
 @SuperBuilder
 
 public class Promocion {
