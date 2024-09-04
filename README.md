@@ -1,1 +1,3 @@
-# Repositorio para el modelo 2 
+# Repositorio para el modelo 2
+
+REPOSITORIO JOAQUIN
